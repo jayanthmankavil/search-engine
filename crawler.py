@@ -47,7 +47,7 @@ csv_filename = 'urls.csv'
 
 sample_urls = read_urls_from_csv(csv_filename)
 
-conn = sqlite3.connect('indexed_data.db')
+conn = sqlite3.connect('crawler.db')
 cursor = conn.cursor()
 
 cursor.execute('''
