@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #00FF00;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00FF00;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #111;
+            border: 1px solid #444;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #00FF00;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #00FF00;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #FF0000;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Results</h1>
+    
+    {% if results %}
+        <ul>
+            {% for result in results %}
+                <li>
+                    <h2><a href="{{ result.url }}">{{ result.title }}</a></h2>
+                    <p>Domain: {{ result.domain }}</p>
+                    <p>Description: {{ result.description }}</p>
+                    <p>Matched Words: {{ result.matched_words }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-results">No results found for "{{ query }}"</p>
+    {% endif %}
+    
+    <a href="/" class="back-link">Back to Search</a>
+</body>
+</html>
